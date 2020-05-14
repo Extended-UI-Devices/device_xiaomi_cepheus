@@ -161,8 +161,8 @@ case "$target" in
     echo 1 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/pl
 
     # Configure input boost settings
-    echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
-    echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
+    echo "0:1017600" > /sys/module/cpu_boost/parameters/input_boost_freq
+    echo 80 > /sys/module/cpu_boost/parameters/input_boost_ms
 
     # Disable wsf, beacause we are using efk.
     # wsf Range : 1..1000 So set to bare minimum value 1.
@@ -224,7 +224,7 @@ case "$target" in
         for memlat in $device/*cpu*-lat/devfreq/*cpu*-lat
         do
         echo "mem_latency" > $memlat/governor
-        echo 10 > $memlat/polling_interval
+        echo 8 > $memlat/polling_interval
         echo 400 > $memlat/mem_latency/ratio_ceil
         done
 
@@ -238,7 +238,7 @@ case "$target" in
         for latfloor in $device/*cpu-ddr-latfloor*/devfreq/*cpu-ddr-latfloor*
         do
         echo "compute" > $latfloor/governor
-        echo 10 > $latfloor/polling_interval
+        echo 8 > $latfloor/polling_interval
         done
 
         # Gold L3 ratio ceil
