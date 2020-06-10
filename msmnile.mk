@@ -341,7 +341,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service.xiaomi_msmnile
+    android.hardware.power@1.3-service.xiaomi_msmnile
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/config/msmnile/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
@@ -466,9 +466,11 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
-    libnl \
+    libdisplayconfig \
     libdisplayconfig.vendor \
-    libqdMetaData
+    libnl \
+    libqdMetaData \
+    libqdMetaData.system
 
 PRODUCT_BOOT_JARS += \
     WfdCommon

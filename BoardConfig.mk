@@ -46,7 +46,7 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 service_locator.enable=1 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=16 androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -109,7 +109,11 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 GNSS_HIDL_VERSION := 2.0
+LOC_HIDL_VERSION := 3.0
 USE_DEVICE_SPECIFIC_GPS := true
+
+# FOD
+TARGET_SURFACEFLINGER_FOD_LIB := //$(DEVICE_PATH):libfod_extension.xiaomi_cepheus
 
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
@@ -140,6 +144,7 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 1610612736
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_USES_METADATA_PARTITION := true
 
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
